@@ -1,0 +1,105 @@
+/* 🖼️ FUNDO DO SITE */
+body {
+  background-image: url('/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+}
+
+/* layout */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+/* 🃏 CARTAS */
+.card {
+  width: 100px;
+  height: 130px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  border-radius: 8px;
+}
+
+.card.reveal-card {
+  transform: rotateY(180deg);
+}
+
+/* lados */
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  backface-visibility: hidden;
+}
+
+/* frente (imagem personagem) */
+.front {
+  transform: rotateY(180deg);
+}
+
+/* 🖼️ verso da carta */
+.back {
+  background-image: url('/back.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* cartas já acertadas */
+.disabled-card {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+/* 🏆 tela de vitória */
+.win-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 999;
+}
+
+.win-screen button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
