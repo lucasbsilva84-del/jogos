@@ -13,6 +13,7 @@ const validateInput = ({ target }) => {
 };
 
 const handleSubmit = (event) => {
+
   event.preventDefault();
 
   localStorage.setItem('player', input.value);
@@ -21,4 +22,5 @@ const handleSubmit = (event) => {
 };
 
 input.addEventListener('input', validateInput);
-form.addEventListener('submit', handleSubmit);  
+
+form.addEventListener('submit', handleSubmit);

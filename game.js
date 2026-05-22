@@ -16,8 +16,11 @@ const characters = [
 ];
 
 const createElement = (tag, className) => {
+
   const element = document.createElement(tag);
+
   element.className = className;
+
   return element;
 };
 
@@ -26,9 +29,11 @@ let secondCard = '';
 let loop;
 
 const checkEndGame = () => {
+
   const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === 20) {
+
     clearInterval(loop);
 
     saveBestTime();
@@ -38,8 +43,12 @@ const checkEndGame = () => {
 };
 
 const checkCards = () => {
-  const firstCharacter = firstCard.getAttribute('data-character');
-  const secondCharacter = secondCard.getAttribute('data-character');
+
+  const firstCharacter =
+    firstCard.getAttribute('data-character');
+
+  const secondCharacter =
+    secondCard.getAttribute('data-character');
 
   if (firstCharacter === secondCharacter) {
 
@@ -61,7 +70,7 @@ const checkCards = () => {
       firstCard = '';
       secondCard = '';
 
-    }, 500);
+    }, 700);
   }
 };
 
@@ -76,11 +85,13 @@ const revealCard = ({ target }) => {
   if (firstCard === '') {
 
     card.classList.add('reveal-card');
+
     firstCard = card;
 
   } else if (secondCard === '') {
 
     card.classList.add('reveal-card');
+
     secondCard = card;
 
     checkCards();
@@ -90,10 +101,12 @@ const revealCard = ({ target }) => {
 const createCard = (character) => {
 
   const card = createElement('div', 'card');
+
   const front = createElement('div', 'face front');
   const back = createElement('div', 'face back');
 
-  front.style.backgroundImage = `url('imagens/${character}.png')`;
+  front.style.backgroundImage =
+    `url('${character}.png')`;
 
   card.appendChild(front);
   card.appendChild(back);
@@ -107,11 +120,15 @@ const createCard = (character) => {
 
 const loadGame = () => {
 
-  const duplicateCharacters = [...characters, ...characters];
+  const duplicateCharacters = [
+    ...characters,
+    ...characters
+  ];
 
-  const shuffledArray = duplicateCharacters.sort(
-    () => Math.random() - 0.5
-  );
+  const shuffledArray =
+    duplicateCharacters.sort(
+      () => Math.random() - 0.5
+    );
 
   shuffledArray.forEach((character) => {
 
@@ -165,13 +182,18 @@ const saveBestTime = () => {
   const best = localStorage.getItem('bestTime');
 
   if (!best || timer.innerHTML < best) {
-    localStorage.setItem('bestTime', timer.innerHTML);
+
+    localStorage.setItem(
+      'bestTime',
+      timer.innerHTML
+    );
   }
 };
 
 window.onload = () => {
 
-  spanPlayer.innerHTML = localStorage.getItem('player');
+  spanPlayer.innerHTML =
+    localStorage.getItem('player');
 
   startTimer();
 
